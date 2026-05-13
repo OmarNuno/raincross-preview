@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Raincross Chiropractic & Wellness Center — Riverside, CA. Dr. Eric Custode, DC.">
+<title>Raincross Chiropractic | Riverside, CA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:     #1B2A4A;
+    --navy-lt:  #253657;
+    --cream:    #F5F0E8;
+    --cream-dk: #EDE6D6;
+    --rust:     #B94C2E;
+    --rust-lt:  #D45F3C;
+    --gold:     #C8922A;
+    --gold-lt:  #E0A83C;
+    --sage:     #4A6741;
+    --font-h:   'Playfair Display', Georgia, serif;
+    --font-b:   'Libre Baskerville', Georgia, serif;
+    --font-c:   'Barlow Condensed', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-b);
+    background: var(--cream);
+    color: var(--navy);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Subtle texture overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23F5F0E8'/%3E%3Crect width='1' height='1' fill='rgba(27,42,74,0.025)'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9998;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .nav-logo { text-decoration: none; display: flex; flex-direction: column; }
+  .nav-logo-top {
+    font-family: var(--font-c);
+    font-size: 1.1rem; font-weight: 800;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--cream); line-height: 1;
+  }
+  .nav-logo-sub {
+    font-size: 0.55rem; font-weight: 500;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-top: 1px;
+  }
+
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-c);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(245,240,232,0.65); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    font-family: var(--font-c);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    background: var(--rust); color: var(--cream);
+    padding: 0.45rem 1.2rem; text-decoration: none;
+    border: 2px solid var(--rust);
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: transparent; color: var(--rust); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--cream); }
+  .mobile-menu {
+    display: none; position: fixed; top: 56px; left: 0; right: 0;
+    background: var(--navy); border-bottom: 3px solid var(--gold);
+    padding: 1.5rem 2rem; flex-direction: column; gap: 0; z-index: 99;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--font-c); font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(245,240,232,0.75); text-decoration: none;
+    padding: 0.9rem 0; border-bottom: 1px solid rgba(245,240,232,0.08);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu a:last-child { border: none; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100svh;
+    padding-top: 56px;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+
+  /* Stars / dot pattern */
+  #home::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(200,146,42,0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+
+  .hero-banner {
+    background: var(--rust);
+    text-align: center;
+    padding: 0.55rem 2rem;
+    font-family: var(--font-c);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--cream);
+    position: relative; z-index: 1;
+  }
+  .hero-banner span { color: var(--gold-lt); margin: 0 0.5rem; }
+
+  .hero-main {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative; z-index: 1;
+  }
+
+  .hero-stamp {
+    display: inline-flex; flex-direction: column; align-items: center;
+    border: 3px solid var(--gold);
+    padding: 0.4rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-stamp-top {
+    font-family: var(--font-c);
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .hero-stamp-divider {
+    width: 100%; height: 1px; background: var(--gold); margin: 3px 0; opacity: 0.4;
+  }
+  .hero-stamp-bot {
+    font-family: var(--font-c);
+    font-size: 0.55rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(200,146,42,0.7);
+  }
+
+  h1 {
+    font-family: var(--font-h);
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+  }
+  h1 .italic { font-style: italic; color: var(--gold); }
+  h1 .block {
+    display: block;
+    font-size: 0.35em;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.08em;
+    margin-top: 0.4rem;
+  }
+
+  .hero-rule-wrap {
+    display: flex; align-items: center; gap: 1rem;
+    margin: 1.5rem 0;
+    width: 100%; max-width: 500px;
+  }
+  .hero-rule { flex: 1; height: 1px; background: rgba(200,146,42,0.3); }
+  .hero-rule-star { color: var(--gold); font-size: 0.7rem; }
+
+  .hero-tagline {
+    font-family: var(--font-b);
+    font-size: 0.95rem; font-style: italic;
+    color: rgba(245,240,232,0.55);
+    max-width: 420px;
+    line-height: 1.7; margin-bottom: 2.5rem;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .btn-rust {
+    background: var(--rust); color: var(--cream);
+    padding: 0.85rem 2.2rem;
+    font-family: var(--font-c); font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    text-decoration: none; border: 2px solid var(--rust);
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-rust:hover { background: transparent; color: var(--rust); }
+  .btn-cream-outline {
+    background: transparent; color: rgba(245,240,232,0.7);
+    border: 2px solid rgba(245,240,232,0.25);
+    padding: 0.85rem 2.2rem;
+    font-family: var(--font-c); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s; display: inline-block;
+  }
+  .btn-cream-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-info-row {
+    margin-top: 3rem;
+    display: flex; gap: 0; flex-wrap: wrap;
+    border: 1px solid rgba(200,146,42,0.2);
+    width: 100%; max-width: 560px;
+  }
+  .hero-info-item {
+    flex: 1; min-width: 130px;
+    padding: 0.8rem 1.2rem;
+    border-right: 1px solid rgba(200,146,42,0.15);
+    text-align: center;
+  }
+  .hero-info-item:last-child { border-right: none; }
+  .hii-label {
+    font-family: var(--font-c); font-size: 0.55rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .hii-val {
+    font-family: var(--font-c); font-size: 0.82rem; font-weight: 500;
+    color: rgba(245,240,232,0.7); letter-spacing: 0.04em;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5.5rem 2rem; }
+  .section-inner { max-width: 920px; margin: 0 auto; }
+
+  .vintage-header { text-align: center; margin-bottom: 3rem; }
+  .vh-rule {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .vh-rule-line { flex: 1; height: 1px; background: rgba(27,42,74,0.15); }
+  .vh-rule-orn { color: var(--gold); font-size: 0.75rem; }
+  .vh-tag {
+    font-family: var(--font-c); font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 0.5rem;
+    display: block;
+  }
+  h2 {
+    font-family: var(--font-h);
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 700; color: var(--navy);
+    line-height: 1.1;
+  }
+  h2 .italic { font-style: italic; color: var(--rust); }
+  h2 .gold { color: var(--gold); }
+  .s-sub {
+    font-size: 0.88rem; font-style: italic;
+    color: rgba(27,42,74,0.55); max-width: 500px;
+    margin: 0.8rem auto 0; line-height: 1.7;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--navy); }
+  #services .vintage-header .vh-tag { color: var(--gold); }
+  #services h2 { color: var(--cream); }
+  #services h2 .italic { color: var(--gold); }
+  #services .s-sub { color: rgba(245,240,232,0.45); }
+  #services .vh-rule-line { background: rgba(245,240,232,0.1); }
+
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(200,146,42,0.15);
+    border: 1px solid rgba(200,146,42,0.15);
+  }
+  .svc-card {
+    background: var(--navy-lt);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .svc-card:hover { background: rgba(200,146,42,0.08); }
+  .svc-num-big {
+    font-family: var(--font-h); font-size: 2.5rem;
+    font-weight: 900; font-style: italic;
+    color: rgba(200,146,42,0.15); line-height: 1;
+    margin-bottom: 0.6rem;
+  }
+  .svc-card h3 {
+    font-family: var(--font-c); font-size: 0.85rem;
+    font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .svc-card p {
+    font-size: 0.8rem; color: rgba(245,240,232,0.45);
+    line-height: 1.6; font-style: italic;
+  }
+  .svc-divider {
+    width: 24px; height: 2px; background: var(--rust);
+    margin: 0.8rem auto;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--cream-dk); }
+  .about-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; }
+  .about-poster {
+    background: var(--navy);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    border: 8px solid var(--navy);
+    outline: 2px solid var(--gold);
+    outline-offset: -12px;
+  }
+  .poster-arch {
+    font-family: var(--font-c); font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .poster-initial {
+    font-family: var(--font-h); font-size: 6rem; font-weight: 900;
+    color: var(--cream); line-height: 1; margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+  .poster-rule { width: 60px; height: 3px; background: var(--rust); margin: 0 auto 1rem; }
+  .poster-name {
+    font-family: var(--font-c); font-size: 1.1rem; font-weight: 800;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream);
+    line-height: 1.2;
+  }
+  .poster-title {
+    font-family: var(--font-b); font-size: 0.78rem; font-style: italic;
+    color: var(--gold); margin-top: 0.4rem;
+  }
+  .poster-footer {
+    margin-top: 1.5rem;
+    font-family: var(--font-c); font-size: 0.58rem; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+  }
+
+  .about-text {}
+  .about-text .vh-tag { text-align: left; }
+  .about-text h2 { text-align: left; margin-bottom: 1.2rem; }
+  .about-text p {
+    font-size: 0.88rem; color: rgba(27,42,74,0.7);
+    line-height: 1.85; margin-bottom: 1.1rem; font-style: italic;
+  }
+  .cred-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
+  .cred-item {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(27,42,74,0.08);
+  }
+  .cred-item:last-child { border: none; }
+  .cred-bullet {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--rust); flex-shrink: 0; margin-top: 5px;
+  }
+  .cred-text { font-size: 0.82rem; color: rgba(27,42,74,0.7); line-height: 1.5; }
+  .cred-text strong { color: var(--navy); font-style: normal; }
+
+  /* ── CONDITIONS ── */
+  #conditions { background: var(--cream); }
+  .cond-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+  }
+  .cond-card {
+    background: var(--cream-dk);
+    border: 1px solid rgba(27,42,74,0.1);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .cond-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--gold);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform 0.25s;
+  }
+  .cond-card:hover::before, .cond-card.open::before { transform: scaleY(1); }
+  .cond-card:hover { background: var(--cream); }
+  .cond-n {
+    font-family: var(--font-c); font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .cond-title {
+    font-family: var(--font-h); font-size: 1rem;
+    font-weight: 700; color: var(--navy);
+    margin-bottom: 0.4rem; line-height: 1.2;
+  }
+  .cond-short { font-size: 0.78rem; color: rgba(27,42,74,0.55); line-height: 1.5; font-style: italic; }
+  .cond-expand {
+    display: none; margin-top: 0.8rem; padding-top: 0.8rem;
+    border-top: 1px solid rgba(27,42,74,0.08);
+    font-size: 0.78rem; color: rgba(27,42,74,0.6); line-height: 1.65;
+  }
+  .cond-card.open .cond-expand { display: block; }
+  .cond-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem; }
+  .cond-tag {
+    font-family: var(--font-c); font-size: 0.6rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--rust); border: 1px solid rgba(185,76,46,0.25);
+    padding: 0.15rem 0.5rem;
+  }
+
+  /* ── BLOG ── */
+  #blog { background: var(--cream-dk); }
+  .blog-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .blog-card {
+    background: var(--cream);
+    border: 1px solid rgba(27,42,74,0.08);
+    overflow: hidden; transition: box-shadow 0.25s;
+    cursor: pointer;
+  }
+  .blog-card:hover { box-shadow: 0 8px 32px rgba(27,42,74,0.12); }
+  .blog-card-top {
+    background: var(--navy); padding: 1.5rem;
+    position: relative; overflow: hidden;
+  }
+  .bc-deco {
+    position: absolute; bottom: -0.5rem; right: 0.5rem;
+    font-family: var(--font-h); font-size: 5rem; font-weight: 900;
+    font-style: italic; color: rgba(255,255,255,0.04);
+    line-height: 1; pointer-events: none;
+  }
+  .blog-card-top h3 {
+    font-family: var(--font-h); font-size: 1.05rem;
+    font-weight: 700; color: var(--cream); line-height: 1.25;
+    position: relative; z-index: 1;
+  }
+  .blog-cat {
+    font-family: var(--font-c); font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem;
+    position: relative; z-index: 1;
+  }
+  .blog-card-body { padding: 1.2rem 1.5rem; }
+  .blog-card-body p { font-size: 0.8rem; color: rgba(27,42,74,0.6); line-height: 1.6; font-style: italic; }
+  .blog-read {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    margin-top: 0.8rem; font-family: var(--font-c);
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--rust); text-decoration: none;
+  }
+
+  /* ── FAQ ── */
+  #faq { background: var(--navy); }
+  #faq .vintage-header .vh-tag { color: var(--gold); }
+  #faq h2 { color: var(--cream); }
+  #faq h2 .italic { color: var(--gold); }
+  #faq .s-sub { color: rgba(245,240,232,0.4); }
+  #faq .vh-rule-line { background: rgba(245,240,232,0.1); }
+
+  .faq-cols { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; }
+  .faq-left-note {
+    background: rgba(200,146,42,0.08); border: 1px solid rgba(200,146,42,0.2);
+    padding: 1.5rem; margin-top: 2rem;
+  }
+  .faq-left-note p {
+    font-size: 0.8rem; font-style: italic; color: rgba(245,240,232,0.5); margin-bottom: 1rem;
+  }
+  .faq-list { border-top: 1px solid rgba(245,240,232,0.08); }
+  .faq-item { border-bottom: 1px solid rgba(245,240,232,0.06); }
+  .faq-q {
+    width: 100%; background: none; border: none;
+    padding: 1.1rem 0; display: flex; justify-content: space-between;
+    align-items: center; cursor: pointer; text-align: left;
+    gap: 1rem;
+  }
+  .faq-q-text {
+    font-family: var(--font-b); font-size: 0.9rem;
+    color: rgba(245,240,232,0.8); font-style: italic;
+  }
+  .faq-q:hover .faq-q-text { color: var(--gold); }
+  .faq-icon {
+    font-family: var(--font-c); font-size: 1rem; font-weight: 700;
+    color: rgba(200,146,42,0.6); flex-shrink: 0; transition: transform 0.3s;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--gold); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s;
+    font-size: 0.82rem; color: rgba(245,240,232,0.4); line-height: 1.75; font-style: italic;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 0 1rem; }
+
+  /* ── HOURS ── */
+  #hours { background: var(--cream-dk); }
+  .hours-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .hours-card {
+    background: var(--navy); padding: 2.5rem;
+    border: 6px solid var(--navy); outline: 2px solid rgba(200,146,42,0.3); outline-offset: -10px;
+  }
+  .hours-card-title {
+    font-family: var(--font-c); font-size: 0.65rem; font-weight: 800;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem; text-align: center;
+  }
+  .h-rule { width: 40px; height: 2px; background: var(--rust); margin: 0 auto 1.5rem; }
+  .hours-tbl { width: 100%; }
+  .hours-tbl tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .hours-tbl tr:last-child { border: none; }
+  .hours-tbl td { padding: 0.75rem 0; font-size: 0.82rem; }
+  .hours-tbl td:first-child {
+    font-family: var(--font-c); font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(245,240,232,0.4); width: 38%;
+  }
+  .hours-tbl td:last-child { color: rgba(245,240,232,0.75); }
+  .hours-note { margin-top: 1.2rem; font-size: 0.7rem; font-style: italic; color: rgba(245,240,232,0.25); text-align: center; }
+  .hours-right {}
+  .hours-right .vh-tag { text-align: left; }
+  .hours-right h2 { text-align: left; margin-bottom: 1.2rem; }
+  .hours-right p { font-size: 0.88rem; color: rgba(27,42,74,0.65); line-height: 1.75; font-style: italic; margin-bottom: 1.5rem; }
+  .loc-card {
+    background: var(--cream); border: 1px solid rgba(27,42,74,0.1);
+    padding: 1.2rem 1.5rem; margin-bottom: 1rem;
+  }
+  .loc-label {
+    font-family: var(--font-c); font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 0.4rem;
+  }
+  .loc-val { font-size: 0.88rem; color: var(--navy); line-height: 1.5; }
+  .loc-val a { color: var(--rust); text-decoration: none; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--cream); }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; }
+  .contact-form {
+    background: var(--cream-dk); padding: 2rem;
+    border: 1px solid rgba(27,42,74,0.1);
+    border-top: 4px solid var(--rust);
+  }
+  .form-title {
+    font-family: var(--font-h); font-size: 1.4rem;
+    font-weight: 700; color: var(--navy); margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .f-group { margin-bottom: 1rem; }
+  .f-group label {
+    display: block; font-family: var(--font-c); font-size: 0.6rem;
+    font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(27,42,74,0.5); margin-bottom: 0.4rem;
+  }
+  .f-group input, .f-group textarea, .f-group select {
+    width: 100%; background: var(--cream); border: 1px solid rgba(27,42,74,0.15);
+    padding: 0.7rem 0.9rem; font-family: var(--font-b);
+    font-size: 0.85rem; color: var(--navy); outline: none;
+    transition: border-color 0.2s; appearance: none;
+  }
+  .f-group input:focus, .f-group textarea:focus, .f-group select:focus { border-color: var(--rust); }
+  .f-group textarea { min-height: 80px; resize: vertical; }
+  .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .f-submit {
+    width: 100%; background: var(--rust); color: var(--cream);
+    border: none; padding: 0.9rem;
+    font-family: var(--font-c); font-size: 0.72rem; font-weight: 800;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s; margin-top: 0.4rem;
+  }
+  .f-submit:hover { background: var(--navy); }
+  .contact-info {}
+  .contact-info h2 { text-align: left; margin-bottom: 1rem; }
+  .contact-info > p { font-size: 0.88rem; color: rgba(27,42,74,0.6); font-style: italic; line-height: 1.7; margin-bottom: 2rem; }
+  .ci-items { display: flex; flex-direction: column; gap: 1.2rem; }
+  .ci-item {}
+  .ci-label { font-family: var(--font-c); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.3rem; }
+  .ci-val { font-size: 0.9rem; color: var(--navy); line-height: 1.5; }
+  .ci-val a { color: var(--navy); text-decoration: none; }
+  .ci-val a:hover { color: var(--rust); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); border-top: 4px solid var(--gold);
+    padding: 1.8rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 0.8rem;
+  }
+  .footer-seal {
+    display: flex; flex-direction: column;
+  }
+  .footer-name {
+    font-family: var(--font-c); font-size: 1rem; font-weight: 800;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream);
+  }
+  .footer-name span { color: var(--gold); }
+  .footer-sub {
+    font-family: var(--font-c); font-size: 0.55rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(200,146,42,0.5); margin-top: 2px;
+  }
+  footer p { font-size: 0.72rem; color: rgba(245,240,232,0.25); }
+  footer a { color: rgba(200,146,42,0.5); text-decoration: none; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── HERO ANIM ── */
+  .hero-main > * { opacity: 0; transform: translateY(16px); animation: fu 0.8s ease both; }
+  .hero-main > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-main > *:nth-child(2) { animation-delay: 0.22s; }
+  .hero-main > *:nth-child(3) { animation-delay: 0.34s; }
+  .hero-main > *:nth-child(4) { animation-delay: 0.46s; }
+  .hero-main > *:nth-child(5) { animation-delay: 0.58s; }
+  .hero-main > *:nth-child(6) { animation-delay: 0.7s; }
+  @keyframes fu { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .about-layout, .faq-cols, .contact-wrap, .hours-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .svc-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    nav { padding: 0 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .f-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="#home">
+    <span class="nav-logo-top">Raincross</span>
+    <span class="nav-logo-sub">Chiropractic & Wellness · Riverside</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#conditions">Conditions</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#hours">Hours</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Book Now</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#about" onclick="closeMobile()">About Dr. Custode</a>
+  <a href="#conditions" onclick="closeMobile()">Conditions</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#hours" onclick="closeMobile()">Hours & Location</a>
+  <a href="#contact" onclick="closeMobile()">Book an Appointment</a>
+</div>
+
+<!-- HERO -->
+<section id="home" style="padding:0">
+  <div class="hero-banner">
+    Serving Riverside, California <span>★</span> Est. Raincross Chiropractic <span>★</span> Dr. Eric Custode, DC
+  </div>
+  <div class="hero-main">
+    <div class="hero-stamp">
+      <span class="hero-stamp-top">Raincross Chiropractic</span>
+      <div class="hero-stamp-divider"></div>
+      <span class="hero-stamp-bot">Riverside · California</span>
+    </div>
+    <h1>Feel <span class="italic">Better.</span><span class="block">Expert Chiropractic & Wellness Care</span></h1>
+    <div class="hero-rule-wrap">
+      <div class="hero-rule"></div>
+      <span class="hero-rule-star">✦</span>
+      <div class="hero-rule"></div>
+    </div>
+    <p class="hero-tagline">Trusted chiropractic care for pain relief, sports injuries, and whole-body wellness — near downtown Riverside since the beginning.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-rust">Book an Appointment</a>
+      <a href="tel:9517828700" class="btn-cream-outline">(951) 782-8700</a>
+    </div>
+    <div class="hero-info-row">
+      <div class="hero-info-item"><div class="hii-label">Location</div><div class="hii-val">3971 Brockton Ave</div></div>
+      <div class="hero-info-item"><div class="hii-label">City</div><div class="hii-val">Riverside, CA</div></div>
+      <div class="hero-info-item"><div class="hii-label">Phone</div><div class="hii-val">(951) 782-8700</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="vintage-header reveal">
+      <div class="vh-rule"><div class="vh-rule-line"></div><span class="vh-rule-orn">✦</span><div class="vh-rule-line"></div></div>
+      <span class="vh-tag">Our Offerings</span>
+      <h2>Expert <span class="italic">Services</span></h2>
+      <p class="s-sub">A full range of chiropractic and wellness treatments — each one crafted to your specific needs.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <div class="svc-card"><div class="svc-num-big">I</div><div class="svc-divider"></div><h3>Chiropractic Care</h3><p>Spinal adjustments, structural remodeling, and corrective care to restore alignment.</p></div>
+      <div class="svc-card"><div class="svc-num-big">II</div><div class="svc-divider"></div><h3>Massage Therapy</h3><p>Therapeutic massage to release tension and accelerate recovery alongside your treatment.</p></div>
+      <div class="svc-card"><div class="svc-num-big">III</div><div class="svc-divider"></div><h3>Sports Injuries</h3><p>Sport-specific diagnosis and rehabilitation to return athletes to peak performance.</p></div>
+      <div class="svc-card"><div class="svc-num-big">IV</div><div class="svc-divider"></div><h3>Auto Injuries</h3><p>Post-accident evaluation, treatment, and documentation for insurance and legal purposes.</p></div>
+      <div class="svc-card"><div class="svc-num-big">V</div><div class="svc-divider"></div><h3>Wellness Care</h3><p>Proactive health strategies and spinal maintenance to keep you at your best year-round.</p></div>
+      <div class="svc-card"><div class="svc-num-big">VI</div><div class="svc-divider"></div><h3>Additional Therapies</h3><p>Traction, rehabilitation, and fitness therapy customized to your condition and goals.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-layout">
+      <div class="about-poster reveal">
+        <div class="poster-arch">★ Doctor of Chiropractic ★</div>
+        <div class="poster-initial">EC</div>
+        <div class="poster-rule"></div>
+        <div class="poster-name">Dr. Eric<br>Custode</div>
+        <div class="poster-title">Doctor of Chiropractic</div>
+        <div class="poster-footer">Raincross Chiropractic & Wellness · Riverside, CA</div>
+      </div>
+      <div class="about-text">
+        <span class="vh-tag reveal">About the Doctor</span>
+        <h2 class="reveal">Trusted <span class="italic">Care.</span><br>Real Results.</h2>
+        <p class="reveal">Dr. Custode brings a rare combination of clinical expertise and hands-on athletic experience. His approach goes beyond symptom management — he addresses the structural root cause so your recovery is complete and lasting.</p>
+        <div class="cred-list reveal">
+          <div class="cred-item"><div class="cred-bullet"></div><div class="cred-text"><strong>Pro athlete experience</strong> — treated professional sports, bodybuilding, collegiate & high school athletes</div></div>
+          <div class="cred-item"><div class="cred-bullet"></div><div class="cred-text"><strong>Dancers & gymnasts</strong> — specialized care for high-demand movement athletes</div></div>
+          <div class="cred-item"><div class="cred-bullet"></div><div class="cred-text"><strong>Medical network</strong> — co-treats with PCPs, orthopedists, neurologists, and physical therapists</div></div>
+          <div class="cred-item"><div class="cred-bullet"></div><div class="cred-text"><strong>Whole-body approach</strong> — posture, alignment, and muscular balance treated alongside the chief complaint</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS -->
+<section id="conditions">
+  <div class="section-inner">
+    <div class="vintage-header reveal">
+      <div class="vh-rule"><div class="vh-rule-line"></div><span class="vh-rule-orn">✦</span><div class="vh-rule-line"></div></div>
+      <span class="vh-tag">What We Treat</span>
+      <h2>Conditions We <span class="italic">Address</span></h2>
+      <p class="s-sub">Tap any condition to learn how we approach your specific situation.</p>
+    </div>
+    <div class="cond-cards reveal">
+      <div class="cond-card" onclick="toggleCond(this)"><div class="cond-n">No. 1</div><div class="cond-title">Back & Lower Back Pain</div><div class="cond-short">The most common reason patients seek chiropractic care — treated at the root, not just the surface.</div><div class="cond-expand">Spinal adjustments, targeted traction, and corrective exercises address the underlying cause. Dr. Custode reviews imaging when needed for a precise diagnosis.<div class="cond-tags"><span class="cond-tag">Lumbar</span><span class="cond-tag">Disc</span><span class="cond-tag">Muscle</span></div></div></div>
+      <div class="cond-card" onclick="toggleCond(this)"><div class="cond-n">No. 2</div><div class="cond-title">Neck Pain & Stiffness</div><div class="cond-short">Screen time and poor posture are driving an epidemic — chiropractic offers lasting relief.</div><div class="cond-expand">Cervical adjustments and soft tissue work restore mobility and reduce nerve pressure. Tech neck and whiplash respond especially well.<div class="cond-tags"><span class="cond-tag">Cervical</span><span class="cond-tag">Tech Neck</span><span class="cond-tag">Whiplash</span></div></div></div>
+      <div class="cond-card" onclick="toggleCond(this)"><div class="cond-n">No. 3</div><div class="cond-title">Sciatica & Nerve Pain</div><div class="cond-short">Burning leg pain and numbness from compressed sciatic nerve roots.</div><div class="cond-expand">Decompression techniques relieve pressure on the sciatic nerve, reducing pain and preventing recurrence — without surgery or medication.<div class="cond-tags"><span class="cond-tag">Sciatic</span><span class="cond-tag">Numbness</span><span class="cond-tag">Disc</span></div></div></div>
+      <div class="cond-card" onclick="toggleCond(this)"><div class="cond-n">No. 4</div><div class="cond-title">Headaches & Migraines</div><div class="cond-short">Many chronic headaches originate in cervical dysfunction — treating the source, not masking it.</div><div class="cond-expand">Chiropractic adjustments address the spinal root of cervicogenic headaches. Some migraines decrease in frequency and intensity with consistent care.<div class="cond-tags"><span class="cond-tag">Tension</span><span class="cond-tag">Cervicogenic</span><span class="cond-tag">Migraine</span></div></div></div>
+      <div class="cond-card" onclick="toggleCond(this)"><div class="cond-n">No. 5</div><div class="cond-title">Sports Injuries</div><div class="cond-short">Shoulder, knee, ankle — sport-specific diagnosis and rehab from an experienced clinician.</div><div class="cond-expand">Accurate diagnosis, targeted manual therapy, structured rehab, and a clear return-to-sport timeline. Treated athletes from youth to professional level.<div class="cond-tags"><span class="cond-tag">Shoulder</span><span class="cond-tag">Knee</span><span class="cond-tag">Ankle</span><span class="cond-tag">Rehab</span></div></div></div>
+      <div class="cond-card" onclick="toggleCond(this)"><div class="cond-n">No. 6</div><div class="cond-title">Auto Accident Injuries</div><div class="cond-short">Whiplash and soft tissue injuries that develop days after the accident.</div><div class="cond-expand">Early intervention prevents long-term damage. We document thoroughly and work with auto insurance providers and legal counsel.<div class="cond-tags"><span class="cond-tag">Whiplash</span><span class="cond-tag">Soft Tissue</span><span class="cond-tag">Insurance</span></div></div></div>
+      <div class="cond-card" onclick="toggleCond(this)"><div class="cond-n">No. 7</div><div class="cond-title">Posture & Scoliosis</div><div class="cond-short">Gradual improvement of spinal curvature and posture with measurable results.</div><div class="cond-expand">Spinal remodeling, corrective exercises, and traction used progressively over time to improve structure and function.<div class="cond-tags"><span class="cond-tag">Posture</span><span class="cond-tag">Scoliosis</span><span class="cond-tag">Kyphosis</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="vintage-header reveal">
+      <div class="vh-rule"><div class="vh-rule-line"></div><span class="vh-rule-orn">✦</span><div class="vh-rule-line"></div></div>
+      <span class="vh-tag">Health Reading</span>
+      <h2>From the <span class="italic">Clinic</span></h2>
+      <p class="s-sub">Practical health guidance from the Raincross Chiropractic team.</p>
+    </div>
+    <div class="blog-cards reveal">
+      <div class="blog-card"><div class="blog-card-top"><div class="blog-cat">Back Pain</div><h3>5 Signs Your Back Pain Needs Professional Attention</h3><div class="bc-deco">I</div></div><div class="blog-card-body"><p>Not all back pain resolves on its own. Learn when it's time to stop waiting and seek care.</p><a class="blog-read" href="#contact">Read More →</a></div></div>
+      <div class="blog-card"><div class="blog-card-top"><div class="blog-cat">Athletic Performance</div><h3>Why Elite Athletes Rely on Regular Adjustments</h3><div class="bc-deco">II</div></div><div class="blog-card-body"><p>Performance maintenance — not just injury recovery — is why professionals make chiropractic a core practice.</p><a class="blog-read" href="#contact">Read More →</a></div></div>
+      <div class="blog-card"><div class="blog-card-top"><div class="blog-cat">Auto Injuries</div><h3>The First 72 Hours After a Car Accident</h3><div class="bc-deco">III</div></div><div class="blog-card-body"><p>The steps you take immediately after an accident shape your recovery and insurance outcome.</p><a class="blog-read" href="#contact">Read More →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="vintage-header reveal">
+      <div class="vh-rule"><div class="vh-rule-line"></div><span class="vh-rule-orn">✦</span><div class="vh-rule-line"></div></div>
+      <span class="vh-tag">Common Questions</span>
+      <h2>Frequently <span class="italic">Asked</span></h2>
+      <p class="s-sub" style="color:rgba(245,240,232,0.4)">Everything you need to know before your first visit.</p>
+    </div>
+    <div class="faq-cols reveal">
+      <div>
+        <p style="font-size:0.88rem;font-style:italic;color:rgba(245,240,232,0.45);line-height:1.7">New to chiropractic care? Here are the questions we hear most often from first-time patients.</p>
+        <div class="faq-left-note">
+          <p>Have a question not listed here?</p>
+          <a href="tel:9517828700" class="btn-rust" style="font-size:0.68rem;padding:0.6rem 1.3rem;display:inline-block">Call (951) 782-8700</a>
+        </div>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Does chiropractic care hurt?</span><span class="faq-icon">+</span></button><div class="faq-a">Most patients feel immediate relief. Some experience mild soreness for 24–48 hours. Dr. Custode tailors his technique to each patient's age, condition, and comfort level.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">How many visits will I need?</span><span class="faq-icon">+</span></button><div class="faq-a">Acute injuries may resolve in a few visits. Chronic or structural conditions require a longer plan. You'll get a clear, honest assessment after your first exam.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Do I need a referral?</span><span class="faq-icon">+</span></button><div class="faq-a">No referral needed. Call directly to schedule. We coordinate with your existing care team when needed.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Do you treat auto accident patients?</span><span class="faq-icon">+</span></button><div class="faq-a">Yes. We treat post-accident patients, work with auto insurance, and can coordinate with legal counsel for personal injury cases.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Do you see young athletes?</span><span class="faq-icon">+</span></button><div class="faq-a">Absolutely. Dr. Custode has treated athletes from youth sports through professional competition, as well as dancers and gymnasts.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">What should I bring to my first visit?</span><span class="faq-icon">+</span></button><div class="faq-a">Photo ID, insurance card, and any imaging reports. Arrive a few minutes early. Wear comfortable, loose-fitting clothing.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section id="hours">
+  <div class="section-inner">
+    <div class="vintage-header reveal">
+      <div class="vh-rule"><div class="vh-rule-line"></div><span class="vh-rule-orn">✦</span><div class="vh-rule-line"></div></div>
+      <span class="vh-tag">Visit Us</span>
+      <h2>Office <span class="italic">Hours</span></h2>
+    </div>
+    <div class="hours-layout">
+      <div class="hours-card reveal">
+        <div class="hours-card-title">★ Office Hours ★</div>
+        <div class="h-rule"></div>
+        <table class="hours-tbl">
+          <tr><td>Monday</td><td>9:00am–1:00pm · 3:00–6:00pm</td></tr>
+          <tr><td>Tuesday</td><td>By Appointment Only</td></tr>
+          <tr><td>Wednesday</td><td>9:00am–1:00pm · 3:00–6:00pm</td></tr>
+          <tr><td>Thursday</td><td>10:00am–12:00pm · 2:00–6:00pm</td></tr>
+          <tr><td>Friday</td><td>8:30am–1:00pm</td></tr>
+          <tr><td>Saturday</td><td>Closed</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+        <p class="hours-note">* Subject to change. Holidays may affect availability.</p>
+      </div>
+      <div class="hours-right reveal">
+        <span class="vh-tag">Location</span>
+        <h2>Find <span class="italic">Us</span></h2>
+        <p>Conveniently located near downtown Riverside. We recommend calling ahead to confirm your visit time.</p>
+        <div class="loc-card"><div class="loc-label">Address</div><div class="loc-val">3971 Brockton Avenue<br>Riverside, CA 92501<br><em style="font-size:0.82rem;color:var(--rust)">Near Downtown Riverside</em></div></div>
+        <div class="loc-card"><div class="loc-label">Phone</div><div class="loc-val"><a href="tel:9517828700">(951) 782-8700</a></div></div>
+        <a href="#contact" class="btn-rust" style="display:inline-block;margin-top:1.2rem">Request an Appointment</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="vintage-header reveal">
+      <div class="vh-rule"><div class="vh-rule-line"></div><span class="vh-rule-orn">✦</span><div class="vh-rule-line"></div></div>
+      <span class="vh-tag">Get In Touch</span>
+      <h2>Ready to Feel <span class="italic">Better?</span></h2>
+      <p class="s-sub">Call, drop by, or send a message. We're here to help.</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <p>Reach out however is easiest — we look forward to welcoming you to Raincross Chiropractic.</p>
+        <div class="ci-items">
+          <div class="ci-item"><div class="ci-label">Phone</div><div class="ci-val"><a href="tel:9517828700">(951) 782-8700</a></div></div>
+          <div class="ci-item"><div class="ci-label">Address</div><div class="ci-val">3971 Brockton Ave<br>Riverside, CA 92501</div></div>
+          <div class="ci-item"><div class="ci-label">Hours Summary</div><div class="ci-val" style="font-size:0.82rem;line-height:1.6;color:rgba(27,42,74,0.65)">Mon / Wed: 9am–1pm, 3–6pm<br>Thu: 10am–12pm, 2–6pm<br>Fri: 8:30am–1pm<br>Tue: By appt · Sat/Sun: Closed</div></div>
+          <div class="ci-item"><div class="ci-label">Our Promise</div><div class="ci-val" style="font-size:0.82rem;font-style:italic;line-height:1.6;color:rgba(27,42,74,0.6)">"To serve our community with compassion and attention, striving to guide all who enter our clinic back to the best possible health."</div></div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-title">Request an Appointment</div>
+        <div class="f-row">
+          <div class="f-group"><label>First Name</label><input type="text" placeholder="Maria"></div>
+          <div class="f-group"><label>Last Name</label><input type="text" placeholder="Garcia"></div>
+        </div>
+        <div class="f-group"><label>Phone Number</label><input type="tel" placeholder="(951) 000-0000"></div>
+        <div class="f-group"><label>Reason for Visit</label><select><option value="">Select a reason...</option><option>Back or Neck Pain</option><option>Sports Injury</option><option>Auto Accident</option><option>Sciatica</option><option>Headaches</option><option>General Wellness</option><option>Other</option></select></div>
+        <div class="f-group"><label>Message (optional)</label><textarea placeholder="Tell us a bit about what's going on..."></textarea></div>
+        <button class="f-submit" onclick="alert('Thank you! We\'ll be in touch shortly.')">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-seal">
+    <span class="footer-name">Raincross <span>Chiropractic</span></span>
+    <span class="footer-sub">& Wellness Center · Riverside, California</span>
+  </div>
+  <p>3971 Brockton Ave, Riverside CA · <a href="tel:9517828700">(951) 782-8700</a></p>
+  <p>© 2025 Dr. Eric Custode, DC · All Rights Reserved</p>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+  function toggleCond(item) {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.cond-card').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  }
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 70); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

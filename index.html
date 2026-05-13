@@ -7,221 +7,194 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: 'DM Sans', sans-serif;
-    background: #F4EFE6;
-    color: #3D2B1F;
+    background: #1B2A4A;
+    color: #F5F0E8;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1.5rem;
+    padding: 3rem 1.5rem;
   }
 
-  .top-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #C9A96E;
-    margin-bottom: 0.6rem;
-    text-align: center;
+  .header { text-align: center; margin-bottom: 3rem; }
+  .header-tag {
+    font-size: 0.65rem; letter-spacing: 0.26em; text-transform: uppercase;
+    color: #C8922A; margin-bottom: 0.6rem;
+    display: flex; align-items: center; justify-content: center; gap: 0.8rem;
   }
-
+  .header-tag::before, .header-tag::after { content: ''; width: 28px; height: 1px; background: #C8922A; opacity: 0.5; }
   h1 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.8rem, 6vw, 2.8rem);
-    font-weight: 300;
-    text-align: center;
-    color: #1C2B22;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    font-weight: 300; color: #F5F0E8; line-height: 1.15;
+  }
+  h1 em { font-style: italic; color: #C8922A; }
+  .header-sub {
+    font-size: 0.85rem; color: rgba(245,240,232,0.45);
+    font-weight: 300; margin-top: 0.6rem;
   }
 
-  h1 em {
-    font-style: italic;
-    color: #C9A96E;
-  }
-
-  .subtitle {
-    text-align: center;
-    font-size: 0.88rem;
-    color: #8C7B6E;
-    font-weight: 300;
-    margin-bottom: 3rem;
-    max-width: 340px;
-  }
-
-  .cards {
+  .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
-    width: 100%;
-    max-width: 640px;
+    max-width: 760px;
+    margin: 0 auto;
   }
 
   .card {
-    text-decoration: none;
-    border-radius: 12px;
-    overflow: hidden;
+    text-decoration: none; display: block;
+    border-radius: 6px; overflow: hidden;
     transition: transform 0.25s, box-shadow 0.25s;
-    display: block;
-    box-shadow: 0 4px 20px rgba(28,43,34,0.10);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
   }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 36px rgba(28,43,34,0.18);
-  }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
   .card:active { transform: scale(0.98); }
 
   .card-thumb {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
   }
+  .thumb-v1 { background: linear-gradient(145deg, #E8D9C8 0%, #C4765A 100%); }
+  .thumb-v2 { background: linear-gradient(145deg, #1C2B22 0%, #2E4A38 60%, #C9A96E 100%); }
+  .thumb-v3 { background: linear-gradient(145deg, #FAFAF8 0%, #E0EFEB 50%, #0F0F0F 100%); }
+  .thumb-v4 { background: linear-gradient(145deg, #1B2A4A 0%, #B94C2E 60%, #C8922A 100%); }
 
-  .card-thumb-v1 {
-    background: linear-gradient(145deg, #E8D9C8 0%, #D9967E 100%);
+  .thumb-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; padding: 0.35rem 1rem;
+    border-radius: 50px; position: relative; z-index: 1;
   }
-  .card-thumb-v2 {
-    background: linear-gradient(145deg, #1C2B22 0%, #2E4A38 100%);
-  }
+  .lbl-v1 { background: rgba(255,255,255,0.5); color: #3D2B1F; }
+  .lbl-v2 { background: rgba(201,169,110,0.2); color: #DFC28F; border: 1px solid rgba(201,169,110,0.4); }
+  .lbl-v3 { background: rgba(192,57,43,0.15); color: #C0392B; border: 1px solid rgba(192,57,43,0.3); }
+  .lbl-v4 { background: rgba(200,146,42,0.2); color: #E0A83C; border: 1px solid rgba(200,146,42,0.4); }
 
-  .thumb-word {
+  .thumb-deco {
+    position: absolute; bottom: 0.4rem; right: 0.8rem;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
-    line-height: 1;
-    opacity: 0.18;
-    position: absolute;
-    bottom: 0.5rem;
-    right: 0.8rem;
+    font-size: 4rem; font-weight: 300;
+    opacity: 0.1; line-height: 1;
+    pointer-events: none;
   }
-  .card-thumb-v1 .thumb-word { color: #3D2B1F; }
-  .card-thumb-v2 .thumb-word { color: #F4EFE6; }
 
-  .thumb-badge {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.9rem;
-    border-radius: 50px;
-    position: relative; z-index: 1;
-  }
-  .badge-v1 { background: rgba(255,255,255,0.5); color: #3D2B1F; }
-  .badge-v2 { background: rgba(201,169,110,0.25); color: #DFC28F; border: 1px solid rgba(201,169,110,0.4); }
+  .card-body { padding: 1.1rem 1.2rem 1.3rem; }
+  .body-v1 { background: #fff; }
+  .body-v2 { background: #253A2D; }
+  .body-v3 { background: #F5F5F3; }
+  .body-v4 { background: #1B2A4A; border-top: 3px solid #C8922A; }
 
-  .card-body {
-    padding: 1.1rem 1.2rem 1.3rem;
-  }
-  .card-body-v1 { background: #fff; }
-  .card-body-v2 { background: #253A2D; }
-
-  .card-version {
-    font-size: 0.65rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+  .card-ver {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
     margin-bottom: 0.3rem;
   }
   .ver-v1 { color: #C4765A; }
   .ver-v2 { color: #C9A96E; }
+  .ver-v3 { color: #C0392B; }
+  .ver-v4 { color: #C8922A; }
 
   .card-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-    line-height: 1.2;
+    font-size: 1.1rem; font-weight: 600; line-height: 1.2; margin-bottom: 0.3rem;
   }
   .title-v1 { color: #3D2B1F; }
   .title-v2 { color: #F4EFE6; }
+  .title-v3 { color: #0F0F0F; }
+  .title-v4 { color: #F5F0E8; }
 
-  .card-desc {
-    font-size: 0.77rem;
-    line-height: 1.5;
-    font-weight: 300;
-  }
+  .card-desc { font-size: 0.76rem; line-height: 1.5; font-weight: 300; }
   .desc-v1 { color: #8C7B6E; }
-  .desc-v2 { color: rgba(244,239,230,0.5); }
+  .desc-v2 { color: rgba(244,239,230,0.45); }
+  .desc-v3 { color: #9A9A9A; }
+  .desc-v4 { color: rgba(245,240,232,0.45); }
 
   .card-cta {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    margin-top: 0.8rem;
-    font-size: 0.73rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    margin-top: 0.7rem; font-size: 0.68rem;
+    font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
   }
   .cta-v1 { color: #C4765A; }
   .cta-v2 { color: #C9A96E; }
+  .cta-v3 { color: #C0392B; }
+  .cta-v4 { color: #C8922A; }
 
-  .note {
-    margin-top: 2.5rem;
-    font-size: 0.75rem;
-    color: #8C7B6E;
-    text-align: center;
-    font-weight: 300;
-    max-width: 320px;
+  .footer-note {
+    text-align: center; margin-top: 2.5rem;
+    font-size: 0.75rem; color: rgba(245,240,232,0.3);
+    font-weight: 300; max-width: 400px; margin-left: auto; margin-right: auto;
+    line-height: 1.6;
   }
 
-  .divider {
-    width: 40px; height: 1px;
-    background: #C9A96E;
-    margin: 2rem auto;
-    opacity: 0.4;
-  }
-
-  @media (max-width: 480px) {
-    .cards { grid-template-columns: 1fr; max-width: 360px; }
-    .card-thumb { height: 140px; }
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: 1fr; max-width: 380px; }
+    .card-thumb { height: 130px; }
   }
 </style>
 </head>
 <body>
 
-  <p class="top-label">Website Redesign Preview</p>
-  <h1>Raincross<br><em>Chiropractic</em></h1>
-  <p class="subtitle">Two design directions for your review. Tap either card to explore the full site.</p>
+  <div class="header">
+    <div class="header-tag">Website Redesign Preview</div>
+    <h1>Raincross <em>Chiropractic</em></h1>
+    <p class="header-sub">Four design directions — tap any to explore the full site.</p>
+  </div>
 
-  <div class="cards">
+  <div class="grid">
 
     <a class="card" href="raincross-chiropractic.html">
-      <div class="card-thumb card-thumb-v1">
-        <span class="thumb-badge badge-v1">Warm & Earthy</span>
-        <span class="thumb-word">V1</span>
+      <div class="card-thumb thumb-v1">
+        <span class="thumb-label lbl-v1">Warm & Earthy</span>
+        <span class="thumb-deco" style="color:#3D2B1F">V1</span>
       </div>
-      <div class="card-body card-body-v1">
-        <div class="card-version ver-v1">Version 1</div>
-        <div class="card-title title-v1">Warm &amp; Welcoming</div>
-        <div class="card-desc desc-v1">Clay tones, light background, approachable and friendly feel.</div>
+      <div class="card-body body-v1">
+        <div class="card-ver ver-v1">Version 1</div>
+        <div class="card-title title-v1">Warm & Welcoming</div>
+        <div class="card-desc desc-v1">Clay tones, light background, approachable and friendly.</div>
         <div class="card-cta cta-v1">View Design →</div>
       </div>
     </a>
 
     <a class="card" href="raincross-v2.html">
-      <div class="card-thumb card-thumb-v2">
-        <span class="thumb-badge badge-v2">Dark & Refined</span>
-        <span class="thumb-word">V2</span>
+      <div class="card-thumb thumb-v2">
+        <span class="thumb-label lbl-v2">Dark & Refined</span>
+        <span class="thumb-deco" style="color:#F4EFE6">V2</span>
       </div>
-      <div class="card-body card-body-v2">
-        <div class="card-version ver-v2">Version 2</div>
-        <div class="card-title title-v2">Luxury &amp; Bold</div>
-        <div class="card-desc desc-v2">Forest green, gold accents, premium wellness clinic feel.</div>
+      <div class="card-body body-v2">
+        <div class="card-ver ver-v2">Version 2</div>
+        <div class="card-title title-v2">Luxury & Bold</div>
+        <div class="card-desc desc-v2">Forest green, gold accents, premium wellness feel.</div>
         <div class="card-cta cta-v2">View Design →</div>
+      </div>
+    </a>
+
+    <a class="card" href="raincross-v3.html">
+      <div class="card-thumb thumb-v3">
+        <span class="thumb-label lbl-v3">Minimal & Clean</span>
+        <span class="thumb-deco" style="color:#0F0F0F">V3</span>
+      </div>
+      <div class="card-body body-v3">
+        <div class="card-ver ver-v3">Version 3</div>
+        <div class="card-title title-v3">Zen Minimalist</div>
+        <div class="card-desc desc-v3">Stark white, ink typography, Japanese-inspired precision.</div>
+        <div class="card-cta cta-v3">View Design →</div>
+      </div>
+    </a>
+
+    <a class="card" href="raincross-v4.html">
+      <div class="card-thumb thumb-v4">
+        <span class="thumb-label lbl-v4">Retro & Bold</span>
+        <span class="thumb-deco" style="color:#F5F0E8">V4</span>
+      </div>
+      <div class="card-body body-v4">
+        <div class="card-ver ver-v4">Version 4</div>
+        <div class="card-title title-v4">Vintage Americana</div>
+        <div class="card-desc desc-v4">Navy & rust, poster typography, classic and trustworthy.</div>
+        <div class="card-cta cta-v4">View Design →</div>
       </div>
     </a>
 
   </div>
 
-  <div class="divider"></div>
-  <p class="note">These are design concepts — all content, hours, and contact info are real and ready to go.</p>
+  <p class="footer-note">All content, hours, and contact info are real and ready to go. These are design concepts for your review.</p>
 
 </body>
 </html>
