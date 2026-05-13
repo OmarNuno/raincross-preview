@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raincross Chiropractic — Website Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #F4EFE6;
+    color: #3D2B1F;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .top-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #C9A96E;
+    margin-bottom: 0.6rem;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    font-weight: 300;
+    text-align: center;
+    color: #1C2B22;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: #C9A96E;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 0.88rem;
+    color: #8C7B6E;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    max-width: 340px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .card {
+    text-decoration: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: block;
+    box-shadow: 0 4px 20px rgba(28,43,34,0.10);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(28,43,34,0.18);
+  }
+  .card:active { transform: scale(0.98); }
+
+  .card-thumb {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-thumb-v1 {
+    background: linear-gradient(145deg, #E8D9C8 0%, #D9967E 100%);
+  }
+  .card-thumb-v2 {
+    background: linear-gradient(145deg, #1C2B22 0%, #2E4A38 100%);
+  }
+
+  .thumb-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1;
+    opacity: 0.18;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.8rem;
+  }
+  .card-thumb-v1 .thumb-word { color: #3D2B1F; }
+  .card-thumb-v2 .thumb-word { color: #F4EFE6; }
+
+  .thumb-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    position: relative; z-index: 1;
+  }
+  .badge-v1 { background: rgba(255,255,255,0.5); color: #3D2B1F; }
+  .badge-v2 { background: rgba(201,169,110,0.25); color: #DFC28F; border: 1px solid rgba(201,169,110,0.4); }
+
+  .card-body {
+    padding: 1.1rem 1.2rem 1.3rem;
+  }
+  .card-body-v1 { background: #fff; }
+  .card-body-v2 { background: #253A2D; }
+
+  .card-version {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .ver-v1 { color: #C4765A; }
+  .ver-v2 { color: #C9A96E; }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .title-v1 { color: #3D2B1F; }
+  .title-v2 { color: #F4EFE6; }
+
+  .card-desc {
+    font-size: 0.77rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  .desc-v1 { color: #8C7B6E; }
+  .desc-v2 { color: rgba(244,239,230,0.5); }
+
+  .card-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.8rem;
+    font-size: 0.73rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .cta-v1 { color: #C4765A; }
+  .cta-v2 { color: #C9A96E; }
+
+  .note {
+    margin-top: 2.5rem;
+    font-size: 0.75rem;
+    color: #8C7B6E;
+    text-align: center;
+    font-weight: 300;
+    max-width: 320px;
+  }
+
+  .divider {
+    width: 40px; height: 1px;
+    background: #C9A96E;
+    margin: 2rem auto;
+    opacity: 0.4;
+  }
+
+  @media (max-width: 480px) {
+    .cards { grid-template-columns: 1fr; max-width: 360px; }
+    .card-thumb { height: 140px; }
+  }
+</style>
+</head>
+<body>
+
+  <p class="top-label">Website Redesign Preview</p>
+  <h1>Raincross<br><em>Chiropractic</em></h1>
+  <p class="subtitle">Two design directions for your review. Tap either card to explore the full site.</p>
+
+  <div class="cards">
+
+    <a class="card" href="raincross-chiropractic.html">
+      <div class="card-thumb card-thumb-v1">
+        <span class="thumb-badge badge-v1">Warm & Earthy</span>
+        <span class="thumb-word">V1</span>
+      </div>
+      <div class="card-body card-body-v1">
+        <div class="card-version ver-v1">Version 1</div>
+        <div class="card-title title-v1">Warm &amp; Welcoming</div>
+        <div class="card-desc desc-v1">Clay tones, light background, approachable and friendly feel.</div>
+        <div class="card-cta cta-v1">View Design →</div>
+      </div>
+    </a>
+
+    <a class="card" href="raincross-v2.html">
+      <div class="card-thumb card-thumb-v2">
+        <span class="thumb-badge badge-v2">Dark & Refined</span>
+        <span class="thumb-word">V2</span>
+      </div>
+      <div class="card-body card-body-v2">
+        <div class="card-version ver-v2">Version 2</div>
+        <div class="card-title title-v2">Luxury &amp; Bold</div>
+        <div class="card-desc desc-v2">Forest green, gold accents, premium wellness clinic feel.</div>
+        <div class="card-cta cta-v2">View Design →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="divider"></div>
+  <p class="note">These are design concepts — all content, hours, and contact info are real and ready to go.</p>
+
+</body>
+</html>
