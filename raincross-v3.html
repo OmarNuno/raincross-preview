@@ -126,11 +126,12 @@
 
   /* ── HERO ── */
   #home {
-    min-height: 100svh;
+    min-height: 80svh;
     padding-top: 60px;
     display: flex;
     position: relative;
     overflow: hidden;
+    border-top: 3px solid var(--red);
   }
 
   /* Vertical rule decoration */
@@ -146,7 +147,7 @@
     flex: 1;
     display: flex; flex-direction: column;
     justify-content: center;
-    padding: 5rem 3rem 5rem 3rem;
+    padding: 3rem 3rem 3rem 3rem;
     border-right: 1px solid rgba(15,15,15,0.06);
   }
 
@@ -155,16 +156,16 @@
     font-size: 0.75rem;
     letter-spacing: 0.3em;
     color: var(--ink-faint);
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
   }
 
   h1 {
     font-family: var(--font-d);
-    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-size: clamp(2.8rem, 6vw, 5rem);
     font-weight: 400;
     line-height: 1.05;
     color: var(--ink);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -0.01em;
   }
   h1 .red { color: var(--red); }
@@ -261,7 +262,7 @@
   }
 
   /* ── SECTIONS ── */
-  section { padding: 6rem 3rem; }
+  section { padding: 5rem 3rem; }
   .section-inner { max-width: 920px; margin: 0 auto; }
 
   .s-num {
@@ -273,7 +274,7 @@
   }
   h2 {
     font-family: var(--font-d);
-    font-size: clamp(2rem, 4.5vw, 3.6rem);
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
     font-weight: 400;
     line-height: 1.1;
     color: var(--ink);
@@ -287,12 +288,15 @@
     color: var(--ink-faint);
     max-width: 500px;
     line-height: 1.85;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     letter-spacing: 0.02em;
   }
 
+  /* ── FAQ ── */
+  #faq { background: var(--paper-dk); }
+
   /* ── SERVICES ── */
-  #services { background: var(--paper); }
+  #services { background: var(--paper); border-top: 1px solid rgba(15,15,15,0.06); }
   .svc-table {
     width: 100%;
     border-top: 1px solid rgba(15,15,15,0.08);
@@ -465,20 +469,20 @@
   }
 
   /* ── BLOG ── */
-  #blog { background: var(--paper-dk); }
+  #blog { background: #1A1A1A; }
   .blog-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
     gap: 1px;
-    background: rgba(15,15,15,0.08);
+    background: rgba(255,255,255,0.08);
   }
   .blog-card {
-    background: var(--paper-dk);
+    background: #222222;
     padding: 2rem;
     transition: background 0.2s;
     cursor: pointer;
   }
-  .blog-card:hover { background: var(--paper); }
+  .blog-card:hover { background: #2A2A2A; }
   .blog-cat {
     font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--red); margin-bottom: 0.8rem;
@@ -486,18 +490,18 @@
   .blog-card h3 {
     font-family: var(--font-d);
     font-size: 1.1rem; font-weight: 400;
-    color: var(--ink); line-height: 1.3;
+    color: var(--paper); line-height: 1.3;
     margin-bottom: 0.6rem;
   }
   .blog-card p {
     font-size: 0.78rem; font-weight: 300;
-    color: var(--ink-faint); line-height: 1.65;
+    color: rgba(250,250,248,0.45); line-height: 1.65;
   }
   .blog-link {
     display: inline-flex; align-items: center; gap: 0.3rem;
     margin-top: 1rem; font-size: 0.7rem;
     letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--ink); text-decoration: none;
+    color: var(--paper); text-decoration: none;
     transition: color 0.2s;
   }
   .blog-link:hover { color: var(--red); }
@@ -535,7 +539,7 @@
   .faq-item.open .faq-a { max-height: 300px; padding: 0 0 1rem; }
 
   /* ── HOURS ── */
-  #hours { background: #1A1A1A; }
+  #hours { background: #1A1A1A; border-top: 3px solid var(--red); }
   .hours-inner {
     max-width: 920px; margin: 0 auto;
     display: grid; grid-template-columns: 1fr 1fr;
@@ -543,37 +547,36 @@
   }
   #hours .s-num { color: rgba(255,255,255,0.3); }
   #hours h2 { color: var(--paper); }
-  #hours .s-lead { color: rgba(255,255,255,0.4); }
+  #hours .s-lead { color: rgba(255,255,255,0.45); }
   .hours-tbl { width: 100%; }
-  .hours-tbl tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .hours-tbl tr { border-bottom: 1px solid rgba(255,255,255,0.08); }
   .hours-tbl tr:last-child { border: none; }
-  .hours-tbl td { padding: 0.85rem 0; font-size: 0.82rem; }
+  .hours-tbl td { padding: 1rem 0; font-size: 0.9rem; }
   .hours-tbl td:first-child {
-    color: rgba(255,255,255,0.4); letter-spacing: 0.1em;
-    text-transform: uppercase; font-size: 0.7rem; width: 38%;
+    color: rgba(255,255,255,0.45); letter-spacing: 0.1em;
+    text-transform: uppercase; font-size: 0.72rem; width: 38%;
+    font-family: var(--font-d);
   }
-  .hours-tbl td:last-child { color: rgba(255,255,255,0.8); }
+  .hours-tbl td:last-child { color: rgba(255,255,255,0.9); font-weight: 300; }
   .hours-note {
-    margin-top: 1.5rem; font-size: 0.72rem;
+    margin-top: 1.5rem; font-size: 0.75rem;
     font-family: var(--font-d); font-style: italic;
     color: rgba(255,255,255,0.25);
   }
   .hours-loc h3 {
-    font-family: var(--font-d); font-size: 1.4rem;
+    font-family: var(--font-d); font-size: 1.6rem;
     color: var(--paper); margin-bottom: 1.5rem;
   }
-  .loc-item {
-    margin-bottom: 1.2rem;
-  }
+  .loc-item { margin-bottom: 1.4rem; }
   .loc-label {
     font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--red); margin-bottom: 0.3rem;
+    color: var(--red); margin-bottom: 0.4rem;
   }
   .loc-val {
-    font-size: 0.85rem; color: rgba(255,255,255,0.6);
-    line-height: 1.5; font-weight: 300;
+    font-size: 0.9rem; color: rgba(255,255,255,0.65);
+    line-height: 1.6; font-weight: 300;
   }
-  .loc-val a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .loc-val a { color: rgba(255,255,255,0.85); text-decoration: none; }
   .loc-val a:hover { color: var(--red); }
 
   /* ── CONTACT ── */
@@ -811,9 +814,9 @@
 <!-- BLOG -->
 <section id="blog">
   <div class="section-inner">
-    <span class="s-num reveal">— 05</span>
-    <h2 class="reveal">Health Articles</h2>
-    <p class="s-lead reveal">Practical guidance from the Raincross Chiropractic team.</p>
+    <span class="s-num reveal" style="color:rgba(255,255,255,0.3)">— 05</span>
+    <h2 class="reveal" style="color:var(--paper)">Health Articles</h2>
+    <p class="s-lead reveal" style="color:rgba(250,250,248,0.45)">Practical guidance from the Raincross Chiropractic team.</p>
     <div class="blog-grid reveal">
       <div class="blog-card"><div class="blog-cat">Back Pain</div><h3>5 Signs Your Back Pain Needs Professional Attention</h3><p>Not all back pain resolves on its own. Here are the warning signs that mean it's time to seek care.</p><a class="blog-link" href="#contact">Read More →</a></div>
       <div class="blog-card"><div class="blog-cat">Athletic Performance</div><h3>Why Elite Athletes Get Regular Adjustments</h3><p>Performance maintenance — not just injury recovery — is why professionals rely on chiropractic.</p><a class="blog-link" href="#contact">Read More →</a></div>
