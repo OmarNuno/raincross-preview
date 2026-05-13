@@ -27,10 +27,17 @@
 
   body {
     font-family: var(--font-b);
-    background: var(--cream);
+    background: var(--cream) !important;
     color: var(--navy);
     overflow-x: hidden;
     line-height: 1.6;
+  }
+
+  #root-wrap {
+    background: var(--cream);
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
   }
 
   /* Subtle texture overlay */
@@ -38,7 +45,7 @@
     content: '';
     position: fixed; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23F5F0E8'/%3E%3Crect width='1' height='1' fill='rgba(27,42,74,0.025)'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 9998;
+    pointer-events: none; z-index: 0;
   }
 
   /* ── NAV ── */
@@ -650,6 +657,7 @@
 </style>
 </head>
 <body>
+<div id="root-wrap">
 
 <nav id="navbar">
   <a class="nav-logo" href="#home">
@@ -920,5 +928,6 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
+</div><!-- /root-wrap -->
 </body>
 </html>

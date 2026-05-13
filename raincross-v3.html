@@ -24,10 +24,15 @@
 
   body {
     font-family: var(--font-u);
-    background: var(--paper);
+    background: var(--paper) !important;
     color: var(--ink);
     line-height: 1.7;
     overflow-x: hidden;
+  }
+
+  #root-wrap {
+    background: var(--paper);
+    min-height: 100vh;
   }
 
   /* ── NAV ── */
@@ -530,7 +535,7 @@
   .faq-item.open .faq-a { max-height: 300px; padding: 0 0 1rem; }
 
   /* ── HOURS ── */
-  #hours { background: var(--ink); }
+  #hours { background: #1A1A1A; }
   .hours-inner {
     max-width: 920px; margin: 0 auto;
     display: grid; grid-template-columns: 1fr 1fr;
@@ -681,6 +686,7 @@
 </style>
 </head>
 <body>
+<div id="root-wrap">
 
 <nav id="navbar">
   <a class="nav-logo" href="#home">
@@ -927,5 +933,6 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
+</div><!-- /root-wrap -->
 </body>
 </html>
